@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-
+from django.core.validators import FileExtensionValidator
 
 User = get_user_model()
 
@@ -25,7 +25,7 @@ class Song(models.Model):
     title = models.CharField(max_length=100)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='songs', verbose_name='Исполнитель')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='songs', verbose_name='Жанр')
-    song = models.FileField(upload_to='uploads/music')
+    song = models.FileField(upload_to='uploads/music', validators=[FileExtensionValidator(allowed_extensions=['mp3'])])
 
     def __str__(self):
         return f'{self.title}'
