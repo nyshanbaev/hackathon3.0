@@ -48,3 +48,9 @@ class SongImageSerializer(serializers.ModelSerializer):
             representation = super().to_representation(instance)  
             representation['images'] = self._get_image_url(instance)   
             return representation     
+
+class PlaylistSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Playlist
+        fields = '__all__'
