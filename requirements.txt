@@ -5,4 +5,4 @@ python-decouple
 django-filter 
 Pillow
 drf-yasg 
-djangorestframework-simplejwt
+djangorestframework-simplejwt 
