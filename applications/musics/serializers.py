@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from applications.musics.models import *
-
+from applications.feedback.serializers import LikeSerializer
 class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -21,7 +21,7 @@ class AuthorSerializer(serializers.ModelSerializer):
         return representation
 
 class SongSerializer(serializers.ModelSerializer):
-    
+    likes = LikeSerializer(many=True, read_only=True)
 
     class Meta:
         model = Song

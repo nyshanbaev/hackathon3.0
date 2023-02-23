@@ -1,12 +1,10 @@
 from django.urls import  path, include
 from rest_framework.routers import DefaultRouter
-from applications.feedback.views import FeedbackModelViewSet
+from applications.feedback.views import *
 
 router = DefaultRouter()
-router.register('', FeedbackModelViewSet)
-
+router.register('', LikeModelViewSet)
 
 urlpatterns = [
-    path('feedback/', include(router.urls))
-
+    path('', include(router.urls)),
 ]

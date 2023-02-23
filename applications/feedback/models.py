@@ -9,7 +9,7 @@ class Like(models.Model):
     """
        Models of likes
     """
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='likes')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='likes')
     song = models.ForeignKey(Song, on_delete=models.CASCADE,related_name='likes' )
     is_like = models.BooleanField(default=False)
 
@@ -20,7 +20,7 @@ class Dislike(models.Model):
     """
        Models of dislikes
     """
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='dislikes') 
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='dislikes') 
     song = models.ForeignKey(Song, on_delete=models.CASCADE, related_name='dislikes')
     is_dislike = models.BooleanField(default=False) 
 
@@ -32,7 +32,7 @@ class Rating(models.Model):
     """
         Models of ratings
     """
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ratings')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ratings')
     song = models.ForeignKey(Song, on_delete=models.CASCADE, related_name='ratings')  
     rating = models.SmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)], blank=True, null=True)
 
@@ -44,7 +44,7 @@ class Favorite(models.Model):
     """
        Models of favorites
     """
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favorites')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favorites')
     song = models.ForeignKey(Song, on_delete=models.CASCADE, related_name='favorites') 
 
     def str(self):
@@ -63,7 +63,7 @@ class Feedback(models.Model):
         ('good', '^_^'),
         ("i'm in shock", 'O.o'),
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='feedbacks')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='feedbacks')
     song = models.ForeignKey(Song, on_delete=models.CASCADE, related_name='feedbacks')
     feedback = models.CharField(choices=CHOICES, max_length=20)
 

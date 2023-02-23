@@ -34,7 +34,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('applications.account.urls')),
     path('musics/', include('applications.musics.urls')),
-    path('v1/api/feedback/', include('applications.feedback.urls')),
-    
+    path('feedback/', include('applications.feedback.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
