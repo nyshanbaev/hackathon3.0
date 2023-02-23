@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from applications.feedback.models import *
 
+
 class LikeSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -30,7 +31,8 @@ class FavoriteSerializer(serializers.ModelSerializer):
 
 
 class FeedbackSerializer(serializers.ModelSerializer):
+    user = serializers.ReadOnlyField(source='user.email')
 
     class Meta:
         model = Feedback
-        fields = ('feedback',)
+        fields = '__all__'
