@@ -42,9 +42,10 @@ INSTALLED_APPS = [
     
     'drf_yasg',
     'django_filters',
-
     'rest_framework',
     'rest_framework_simplejwt',
+    'django_rest_passwordreset',
+
     'applications.musics',
     'applications.account',
     'applications.feedback',

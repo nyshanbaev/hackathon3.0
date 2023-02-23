@@ -12,5 +12,5 @@ urlpatterns = [
     path('activate/<uuid:activation_code>/', ActivationView.as_view()),
     path('login/', TokenObtainPairView.as_view()),
     path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-
+    path('password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
 ]
