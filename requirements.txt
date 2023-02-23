@@ -7,3 +7,4 @@ django-filter
 Pillow
 drf-yasg 
 djangorestframework-simplejwt 
+django-rest-passwordreset
