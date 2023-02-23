@@ -9,6 +9,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from applications.musics.permissions import IsOwner
 
 
 class CustomPagination(PageNumberPagination):
@@ -36,13 +37,15 @@ class SongCreateAPIView(generics.CreateAPIView):
 class SongUpdateAPIView(generics.UpdateAPIView):
     queryset = Song.objects.all() 
     serializer_class = SongSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsOwner]
 
 
 
 class SongDeleteAPIView(generics.DestroyAPIView):
     queryset = Song.objects.all()
     serializer_class = Song 
+    permission_classes = [IsAuthenticated, IsOwner]
+
 
 
 
