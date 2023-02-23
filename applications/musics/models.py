@@ -32,8 +32,16 @@ class Song(models.Model):
 
 class SongImage(models.Model):
     song = models.ForeignKey(Song, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='uploads/song/images', blank=True, null=True)
+    image = models.ImageField(upload_to='uploads/song/images')
 
     def __str__(self):
         return f'{self.song.title}'
-            
+
+class Playlist(models.Model):
+    song = models.ForeignKey(Song, on_delete=models.CASCADE, related_name='playlists')  
+    genre = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='playlists' )
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='playlists')
+    songimage = models.ForeignKey(SongImage, on_delete=models.CASCADE, related_name='playlists')      
+
+    def __str__(self):
+        return f'Now is plaing {self.song}'
